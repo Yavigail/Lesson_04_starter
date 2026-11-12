@@ -1,4 +1,6 @@
 """Example tests (happy path only). They import only selection_core: the lesson 4 test rule."""
+import copy
+
 import pytest
 
 import selection_core
@@ -40,7 +42,6 @@ def test_duplicate_media_is_rejected(sample_event):
 
 @pytest.mark.req("REQ-SEL-04")
 def test_rejected_selection_leaves_event_unchanged(sample_event):
-    import copy
     before = copy.deepcopy(sample_event)
     with pytest.raises(selection_core.SelectionError):
         selection_core.submit_selection(
